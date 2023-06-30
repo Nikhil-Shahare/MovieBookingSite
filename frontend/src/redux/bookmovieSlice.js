@@ -25,7 +25,6 @@ const bookMovieSlice = createSlice({
       state.Bookmovie.movie = action.payload;
     },
     setSeats: (state, action) => {
-
       state.Bookmovie.seats = {
         ...state.Bookmovie.seats,
         ...action.payload
@@ -44,13 +43,13 @@ export const { setMovie, setSeats, setSlot, setLatestBook } = bookMovieSlice.act
 
 export const postBookmovie = () => {
   return (dispatch, getState) => {
-    console.log("getstate",getState().bookmovie);
-    const  Bookmovie  = getState().bookmovie.Bookmovie;
-    
-    axios.post('http://localhost:8000/api/booking', Bookmovie)
+    console.log("getstate", getState().bookmovie);
+    const Bookmovie = getState().bookmovie.Bookmovie;
+
+    axios
+      .post('https://bookingbackend-247s.onrender.com/api/booking', Bookmovie)  // Updated backend API URL
       .then((response) => {
-          console.log(response);
-        
+        console.log(response);
       })
       .catch((error) => {
         console.log(error);
@@ -60,7 +59,8 @@ export const postBookmovie = () => {
 
 export const getlatestbook = () => {
   return (dispatch) => {
-    axios.get('http://localhost:8000/api/booking')
+    axios
+      .get('https://bookingbackend-247s.onrender.com/api/booking')  // Updated backend API URL
       .then((response) => {
         dispatch(setLatestBook(response.data));
       })
