@@ -4,7 +4,7 @@ import Movie from "./components/Movie"; //Component for showing all the movies n
 import Seats from "./components/Seats"; //Component for showing all the seats details
 import Time from "./components/Time"; //Component for showing all the movies timing 
 import Header from "./components/Header";
-import "./new.css"
+import "./App.css"
 import axios from 'axios';
 import background from "../src/assets/infinite.jpg"
 import { postBookmovie, Validation } from "./redux/bookmovieSlice";
@@ -39,12 +39,12 @@ return (
 <div className="animation"></div>
 
       <div className="overlay"></div>
-   <div className="row section main">
-   <div className="section ">
+   <div className="row background main">
+   <div className="background ">
 
    <Header/>
    </div>
-        <div className="col-lg-8 section">
+        <div className="col-lg-8 background">
         
         {valid!=="false"?valid:""}
           {/*Component Contain all the movies name */}
@@ -55,7 +55,7 @@ return (
           <Seats />
        <button className="Btn" onClick={postBook}>Book now</button>
         </div>
-        <div className="col-lg-4  Detail section">
+        <div className="col-lg-4  background">
           {/*Component Contain all the booking details */}
           <BookDetails/>
         </div>
