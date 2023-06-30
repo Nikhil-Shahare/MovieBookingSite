@@ -1,0 +1,151 @@
+body{
+    overflow-x: hidden;
+    align-items: center;
+    
+    
+}
+
+.animation{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background: url("../src/assets/infinite.jpg");
+    background-size: cover;
+    animation : infinite 35s linear infinite;    
+}
+
+@media (max-width: 992px) {
+    .animation {
+      height: 150%;
+       /* Adjust the desired height for small devices */
+    }
+   
+  }
+
+@keyframes infinite{
+    0%{
+        background-position: 50% 0;
+    }
+    100%{
+        background-position: 50% -1000px;
+    }
+}
+
+  
+  
+.main{
+ max-width: 1200px;
+ margin: auto;
+ margin-top: 100px;
+ 
+    
+}
+
+@media (max-width: 1200px) {
+    .main {
+      margin-left: 15px;
+      margin-right: 15px;
+
+       /* Adjust the desired height for small devices */
+    }
+   
+  }
+
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+    z-index: 1;
+  }
+  @media (max-width: 992px) {
+    .overlay {
+      height: 150%; /* Adjust the desired height for small devices */
+    }
+  }
+
+  @media (max-width: 653px) {
+    .animation {
+      height: 250%; /* Adjust the desired height for small devices */
+    }
+  }
+  @media (max-width: 653px) {
+    .overlay {
+      height: 250%; /* Adjust the desired height for small devices */
+    }
+  }
+ 
+    
+
+.section{
+    z-index: 6;
+    /* margin-top: 120px; */
+    background-color: black;
+}
+
+.Detail{
+
+    background-color: black;
+}
+
+/* .container{
+    width: 80%;
+    margin: auto;
+    margin-top: 50px;
+} */
+.Btn {
+    width: 140px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(to right, #990000, #CC0000, #FF0000, #FF3333, #FF6666, #FF9999);
+    background-size: 250%;
+    background-position: left;
+    color: #FF0000;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition-duration: 1s;
+    overflow: hidden;
+    margin-top: 10px;
+    /* margin-left : 10px; */
+    margin-bottom: 10px;
+  }
+  
+  .Btn::before {
+    position: absolute;
+    content: "BOOK NOW";
+    color: #FF0000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 97%;
+    height: 90%;
+    border-radius: 8px;
+    transition-duration: 1s;
+    background-color: rgba(0, 0, 0, 0.842);
+    background-size: 200%;
+  }
+  
+  .Btn:hover {
+    background-position: right;
+    transition-duration: 1s;
+  }
+  
+  .Btn:hover::before {
+    background-position: right;
+    transition-duration: 1s;
+  }
+  
+  .Btn:active {
+    transform: scale(0.95);
+  }
+  

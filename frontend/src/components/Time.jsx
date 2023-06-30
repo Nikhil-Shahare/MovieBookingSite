@@ -2,6 +2,7 @@ import React, { memo } from 'react'
 import { setSlot } from '../redux/bookmovieSlice';
 import { useDispatch } from 'react-redux';
 import store from '../redux/store';
+import "./Time.css"
 const Time = ({setBookmovie,Bookmovie}) => {
   const dispatch=useDispatch();
   const updatetimeslot = (e) => {

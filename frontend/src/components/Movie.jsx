@@ -1,22 +1,23 @@
 import React, { memo } from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import { setMovie } from '../redux/bookmovieSlice';
-import store from '../redux/store';
-const Movie = ({setBookmovie,Bookmovie}) => {
-  
+import "./movie.css"
+const Movie = () => {
+
   const dispatch = useDispatch();
+
   const updatemoviebookname = (e) => {
     dispatch(setMovie(e.target.value));
-    setBookmovie({ ...Bookmovie,[e.target.name]: e.target.value });
+  
  
   };
-  console.log("movstore",store.getState())
+
   return (
-    <div>
+    <div className='border rounded border-dark mb-1'>
   
         
-          <div className="border rounded border-dark mb-1 slots">
           <h3>Select a Movie</h3>
+          <div className="movie">
             {/*radio box for showing Movies name */}
             <input
               type="radio"

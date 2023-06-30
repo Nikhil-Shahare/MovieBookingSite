@@ -3,61 +3,64 @@ import BookDetails from "./components/BookDetails"; //Component for showing all 
 import Movie from "./components/Movie"; //Component for showing all the movies name
 import Seats from "./components/Seats"; //Component for showing all the seats details
 import Time from "./components/Time"; //Component for showing all the movies timing 
-import store from './redux/store';
+import Header from "./components/Header";
+import "./new.css"
 import axios from 'axios';
-import { postBookmovie,getlatestbook  } from "./redux/bookmovieSlice";
+import background from "../src/assets/infinite.jpg"
+import { postBookmovie, Validation } from "./redux/bookmovieSlice";
 import {  useSelector,useDispatch } from 'react-redux';
-
+//import Validation from "./Validation";
 function App() {
+  const [checkval,setval]=useState(null);
   const dispatch =useDispatch();
-  console.log("store1",store.getState())
 
- const Bookmovie = useSelector((state) =>state.bookmovie.Bookmovie);
-  console.log("appbook",Bookmovie);
+
+
+
+  // const Bookmovie = useSelector((state) =>state.bookmovie.Bookmovie);
+//   console.log("appbook",Bookmovie);
 
 
 const postBook = () => {
+
+ 
   dispatch(postBookmovie());
- 
-   
-  // console.log("appbook",Bookmovie);
-  // console.log("bookanewmovie",Bookmovie);
-  // axios.post('http://localhost:8000/api/booking',Bookmovie)
-  //   .then((response) => {
-  // getlatestbook();
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
-  //   });
-}
 
- 
-console.log("latest");
-  return (
- 
-    <div className="main">
-   
-    <div className="div--header ">
-
-    <h3 className="header">BookThatShow !!</h3>
-    </div>
   
-      <div className="row">
-        <div className="col-lg-8 ">
+  
+}
+const valid = useSelector((state) =>state.bookmovie.valid);
+
+
+
+return (
+  <div >
+
+<div className="animation"></div>
+
+      <div className="overlay"></div>
+   <div className="row section main">
+   <div className="section ">
+
+   <Header/>
+   </div>
+        <div className="col-lg-8 section">
+        
+        {valid!=="false"?valid:""}
           {/*Component Contain all the movies name */}
-          <Movie className="slots "  />
+          <Movie  />
           {/*Component Contain all the movies time */}
-          <Time className="slots " />
-          {/*Component Contain all the Seats */}
-          <Seats className="slots "/>
+          <Time />
+          {/*Component Contain all the movie Seats */}
+          <Seats />
+       <button className="Btn" onClick={postBook}>Book now</button>
         </div>
-        <div className="col-lg-4 ">
+        <div className="col-lg-4  Detail section">
           {/*Component Contain all the booking details */}
-          <BookDetails className="slots "/>
+          <BookDetails/>
         </div>
       </div>
-      <button className="book" onClick={postBook}>Book now</button>
-    </div>
+  </div>
   );
 }
 

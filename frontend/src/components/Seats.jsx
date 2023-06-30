@@ -2,6 +2,7 @@ import React, { memo } from 'react'
 import {  useSelector,useDispatch } from 'react-redux';
 import store from '../redux/store';
 import { setSeats } from '../redux/bookmovieSlice';
+import "./Seats.css"
 const Seats = () => {
   console.log("seatstore",store.getState())
    const Bookmovie = useSelector((state) =>state.bookmovie.Bookmovie);
@@ -48,7 +49,7 @@ else{
             {/*Check box for showing Movies Seats Type */}
             <input
               type="checkbox"
-              class="btn-check"
+              class="btn-check "
               name="A1"
               id="9"
               autocomplete="off"
@@ -90,7 +91,7 @@ else{
 
             <input
               type="checkbox"
-              class="btn-check"
+              class="btn-check background"
               name="A4"
               id="12"
               autocomplete="off"

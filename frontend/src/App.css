@@ -1,0 +1,32 @@
+*{
+  margin: 0%;
+  padding: 7px;
+  box-sizing: border-box;
+}
+
+.btn-outline-danger{
+  color: black !important;
+  border-color: black !important ;
+  margin: 5px;
+  font-weight: bold;
+}
+
+input{
+  margin: 0%;
+  padding: 0%;
+  width: 60px;
+  height: 30px;
+}
+
+.book{
+  margin-left: 20px;
+  border-radius: 10px;
+  background-color: green;
+  color: white;
+}
+
+h5{
+  margin: 0%;
+  padding: 0%;
+  margin-left: 5px;
+}
