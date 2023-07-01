@@ -32,10 +32,11 @@ const postBook = () => {
 const valid = useSelector((state) =>state.bookmovie.valid);
 
 
-console.log(valid)
+console.log(valid);
 return (
   <div >
-
+    
+        {valid!=="false"?valid:""}
 <div className="animation"></div>
 
       <div className="overlay"></div>
@@ -45,8 +46,7 @@ return (
    <Header/>
    </div>
         <div className="col-lg-8 background">
-        
-        {valid!=="false"?valid:""}
+    
           {/*Component Contain all the movies name */}
           <Movie  />
           {/*Component Contain all the movies time */}
@@ -54,7 +54,7 @@ return (
           {/*Component Contain all the movie Seats */}
           <Seats />
        <button className="Btn" onClick={postBook}>Book now</button>
-            {alert("This is an alert message!")}
+        
         </div>
         <div className="col-lg-4  background">
           {/*Component Contain all the booking details */}
