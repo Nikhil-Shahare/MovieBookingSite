@@ -79,6 +79,7 @@ export const postBookmovie = () => {
          const response = await axios.post('https://spring-green-turtle-hat.cyclic.app/api/booking',valBookmovie);
          console.log(response);
          dispatch(setLatestBook(response.data));
+         dispatch(getlatestbook());
          dispatch(setValidate(""));
        } catch (error) {
          console.log(error);
