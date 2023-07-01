@@ -54,6 +54,7 @@ return (
           {/*Component Contain all the movie Seats */}
           <Seats />
        <button className="Btn" onClick={postBook}>Book now</button>
+            {window.alert("This is an alert message!")}
         </div>
         <div className="col-lg-4  background">
           {/*Component Contain all the booking details */}
