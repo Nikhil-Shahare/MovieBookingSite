@@ -35,11 +35,14 @@ const bookMovieSlice = createSlice({
     },
     setLatestBook: (state, action) => {
       state.latestBook = action.payload;
+    },
+        setValidate:(state,action)=>{
+state.valid=action.payload;
     }
   },
 });
 
-export const { setMovie, setSeats, setSlot, setLatestBook } = bookMovieSlice.actions;
+export const { setMovie, setSeats, setSlot, setLatestBook,setValidate } = bookMovieSlice.actions;
 const Validation=(valBookmovie)=>{
   //  console.log("valslot",valBookmovie.slot);
   if(valBookmovie.movie===""){
