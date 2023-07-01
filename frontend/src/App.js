@@ -24,9 +24,7 @@ function App() {
 const postBook = () => {
 
  
-  dispatch(postBookmovie()).then(
-    dispatch(getlatestbook());  
-  );
+  dispatch(postBookmovie());
 
    
   
