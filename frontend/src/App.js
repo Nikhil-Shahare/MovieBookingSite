@@ -7,11 +7,12 @@ import Header from "./components/Header";
 import "./App.css"
 import axios from 'axios';
 import background from "../src/assets/infinite.jpg"
-import { postBookmovie, Validation } from "./redux/bookmovieSlice";
+import { postBookmovie } from "./redux/bookmovieSlice";
 import {  useSelector,useDispatch } from 'react-redux';
 //import Validation from "./Validation";
 function App() {
-  const [checkval,setval]=useState(null);
+
+  // const valBookmovie = await getState().bookmovie.Bookmovie;
   const dispatch =useDispatch();
 
 
@@ -32,11 +33,10 @@ const postBook = () => {
 const valid = useSelector((state) =>state.bookmovie.valid);
 
 
-console.log(valid);
+console.log(valid)
 return (
   <div >
-    
-        {valid!=="false"?valid:""}
+
 <div className="animation"></div>
 
       <div className="overlay"></div>
@@ -46,7 +46,8 @@ return (
    <Header/>
    </div>
         <div className="col-lg-8 background">
-    
+      
+        {valid!=="false"?valid:""}
           {/*Component Contain all the movies name */}
           <Movie  />
           {/*Component Contain all the movies time */}
@@ -54,7 +55,6 @@ return (
           {/*Component Contain all the movie Seats */}
           <Seats />
        <button className="Btn" onClick={postBook}>Book now</button>
-        
         </div>
         <div className="col-lg-4  background">
           {/*Component Contain all the booking details */}
