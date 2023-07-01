@@ -49,7 +49,7 @@ export const postBookmovie = () => {
     axios
       .post("https://spring-green-turtle-hat.cyclic.app/api/booking", Bookmovie)  // Updated backend API URL
       .then((response) => {
-        console.log(response);
+        dispatch(getlatestbook);
       })
       .catch((error) => {
         console.log(error);
