@@ -47,7 +47,7 @@ export const postBookmovie = () => {
     const Bookmovie = getState().bookmovie.Bookmovie;
 
     axios
-      .post('https://real-stockings-goat.cyclic.app/api/booking', Bookmovie)  // Updated backend API URL
+      .post("https://spring-green-turtle-hat.cyclic.app/api/booking", Bookmovie)  // Updated backend API URL
       .then((response) => {
         console.log(response);
       })
@@ -60,7 +60,7 @@ export const postBookmovie = () => {
 export const getlatestbook = () => {
   return (dispatch) => {
     axios
-      .get('https://real-stockings-goat.cyclic.app/api/booking')  // Updated backend API URL
+      .get("https://spring-green-turtle-hat.cyclic.app/api/booking")  // Updated backend API URL
       .then((response) => {
         dispatch(setLatestBook(response.data));
       })
