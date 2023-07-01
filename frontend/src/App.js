@@ -26,7 +26,7 @@ const postBook = () => {
  
   dispatch(postBookmovie());
 
-  
+     dispatch(getlatestbook());
   
 }
 const valid = useSelector((state) =>state.bookmovie.valid);
