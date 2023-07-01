@@ -32,7 +32,7 @@ const postBook = () => {
 const valid = useSelector((state) =>state.bookmovie.valid);
 
 
-
+console.log(valid)
 return (
   <div >
 
