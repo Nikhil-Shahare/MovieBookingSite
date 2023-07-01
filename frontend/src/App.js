@@ -24,9 +24,11 @@ function App() {
 const postBook = () => {
 
  
-  dispatch(postBookmovie());
+  dispatch(postBookmovie()).then(
+    dispatch(getlatestbook());  
+  );
 
-     dispatch(getlatestbook());
+   
   
 }
 const valid = useSelector((state) =>state.bookmovie.valid);
