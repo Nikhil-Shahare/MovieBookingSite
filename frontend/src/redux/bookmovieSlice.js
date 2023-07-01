@@ -35,11 +35,11 @@ const bookMovieSlice = createSlice({
     },
     setLatestBook: (state, action) => {
       state.latestBook = action.payload;
-    },
-        setValidate:(state,action)=>{
-state.valid=action.payload;
     }
   },
+  setValidate:(state,action)=>{
+    state.valid=action.payload;
+        }
 });
 
 export const { setMovie, setSeats, setSlot, setLatestBook,setValidate } = bookMovieSlice.actions;
@@ -82,8 +82,9 @@ export const postBookmovie = () => {
          const response = await axios.post('https://spring-green-turtle-hat.cyclic.app/api/booking',valBookmovie);
          console.log(response);
          dispatch(setLatestBook(response.data));
-         dispatch(getlatestbook());
+     
          dispatch(setValidate(""));
+    
        } catch (error) {
          console.log(error);
        }
