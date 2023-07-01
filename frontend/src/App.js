@@ -46,7 +46,7 @@ return (
    </div>
         <div className="col-lg-8 background">
         
-        {valid!=="false"?valid:"")}
+        {valid!=="false"?valid:""}
           {/*Component Contain all the movies name */}
           <Movie  />
           {/*Component Contain all the movies time */}
