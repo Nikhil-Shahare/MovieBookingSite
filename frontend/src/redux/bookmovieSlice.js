@@ -47,7 +47,7 @@ export const postBookmovie = () => {
     const Bookmovie = getState().bookmovie.Bookmovie;
 
     axios
-      .post('https://bookingbackend-247s.onrender.com/api/booking', Bookmovie)  // Updated backend API URL
+      .post('https://real-stockings-goat.cyclic.app/api/booking', Bookmovie)  // Updated backend API URL
       .then((response) => {
         console.log(response);
       })
@@ -60,7 +60,7 @@ export const postBookmovie = () => {
 export const getlatestbook = () => {
   return (dispatch) => {
     axios
-      .get('https://bookingbackend-247s.onrender.com/api/booking')  // Updated backend API URL
+      .get('https://real-stockings-goat.cyclic.app/api/booking')  // Updated backend API URL
       .then((response) => {
         dispatch(setLatestBook(response.data));
       })
