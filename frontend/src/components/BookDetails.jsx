@@ -39,7 +39,7 @@ const BookDetails = () => {
           
 
           </>
-        ) : : getlatest==null?"no previous booking found":""}
+        ) :  getlatest==null?"no previous booking found":""}
       </div>
     </>
   );
