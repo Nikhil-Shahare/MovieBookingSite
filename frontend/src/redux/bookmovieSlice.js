@@ -24,18 +24,23 @@ const bookMovieSlice = createSlice({
   reducers: {
     setMovie: (state, action) => {
       state.Bookmovie.movie = action.payload;
+      state.valid="";
     },
     setSeats: (state, action) => {
       state.Bookmovie.seats = {
         ...state.Bookmovie.seats,
         ...action.payload
+      
       };
+      state.valid="";
     },
     setSlot: (state, action) => {
       state.Bookmovie.slot = action.payload;
+      state.valid="";
     },
     setLatestBook: (state, action) => {
       state.latestBook = action.payload;
+   
     },
     setValidate:(state,action)=>{
       state.valid=action.payload;
@@ -49,7 +54,7 @@ const Validation=(valBookmovie)=>{
   //  console.log("valslot",valBookmovie.slot);
   if(valBookmovie.movie===""){
     
-    return "movie name cant be blank"
+    return "movie name can't be blank"
     
   }
   else if(valBookmovie.slot==="")
