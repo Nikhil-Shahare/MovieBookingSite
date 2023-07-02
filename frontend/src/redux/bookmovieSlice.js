@@ -93,6 +93,7 @@ export const postBookmovie = () => {
          dispatch(setLatestBook(response.data));
      
          dispatch(setValidate(""));
+            window.location.reload();
     
        } catch (error) {
          console.log(error);
