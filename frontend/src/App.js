@@ -1,67 +1,54 @@
-import React, { useCallback, useEffect, useState } from "react";
-import BookDetails from "./components/BookDetails"; //Component for showing all the booking details
-import Movie from "./components/Movie"; //Component for showing all the movies name
-import Seats from "./components/Seats"; //Component for showing all the seats details
-import Time from "./components/Time"; //Component for showing all the movies timing 
+import React, { useState } from "react";
+import BookDetails from "./components/BookDetails";
+import Movie from "./components/Movie";
+import Seats from "./components/Seats";
+import Time from "./components/Time";
 import Header from "./components/Header";
-import "./App.css"
-import axios from 'axios';
-import background from "../src/assets/infinite.jpg"
-import { postBookmovie } from "./redux/bookmovieSlice";
-import {  useSelector,useDispatch } from 'react-redux';
-//import Validation from "./Validation";
+import "./App.css";
+import { postBookmovie, setValidate } from "./redux/bookmovieSlice";
+import { useSelector, useDispatch } from 'react-redux';
+
 function App() {
+  const dispatch = useDispatch();
+  const valid = useSelector((state) => state.bookmovie.valid);
+  const [isModalOpen, setModalOpen] = useState(false);
 
-  // const valBookmovie = await getState().bookmovie.Bookmovie;
-  const dispatch =useDispatch();
+  const postBook = () => {
+    dispatch(postBookmovie());
+    setModalOpen(true);
+  }
 
+  const closeModal = () => {
+    setModalOpen(false);
+  }
 
-
-
-  // const Bookmovie = useSelector((state) =>state.bookmovie.Bookmovie);
-//   console.log("appbook",Bookmovie);
-
-
-const postBook = () => {
-
- 
-  dispatch(postBookmovie());
-
-   
-  
-}
-const valid = useSelector((state) =>state.bookmovie.valid);
-
-
-console.log(valid)
-return (
-  <div >
-
-<div className="animation"></div>
-
+  return (
+    <div>
+      <div className="animation"></div>
       <div className="overlay"></div>
-   <div className="row background main">
-   <div className="background ">
-
-   <Header/>
-   </div>
-        <div className="col-lg-8 background">
-      
-        {valid!=="false"?valid:""}
-          {/*Component Contain all the movies name */}
-          <Movie  />
-          {/*Component Contain all the movies time */}
-          <Time />
-          {/*Component Contain all the movie Seats */}
-          <Seats />
-       <button className="Btn" onClick={postBook}>Book now</button>
+      <div className="row background main">
+        <div className="background">
+          <Header />
         </div>
-        <div className="col-lg-4  background">
-          {/*Component Contain all the booking details */}
-          <BookDetails/>
+        <div className="col-lg-8 background">
+          <Movie />
+          <Time />
+          <Seats />
+          <button className="Btn" onClick={postBook}>Book now</button>
+        </div>
+        <div className="col-lg-4 background">
+          <BookDetails />
         </div>
       </div>
-  </div>
+      {valid !== "" && isModalOpen && (
+        <div className="modal-overlay" onClick={closeModal}>
+          <div className="modal-content">
+            <div className="modal-error">ERROR!!</div>
+            <div className="validation-error">{valid}</div>
+          </div>
+        </div>
+      )}
+    </div>
   );
 }
 
