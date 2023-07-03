@@ -26,11 +26,11 @@ function App() {
     <div>
       <div className="animation"></div>
       <div className="overlay"></div>
-      <div className="row background main">
-        <div className="background">
+      <div className="row  main">
+        <div className="head">
           <Header />
         </div>
-        <div className="col-lg-8 background">
+        <div className="col-lg-8  background">
           <Movie />
           <Time />
           <Seats />
@@ -43,11 +43,14 @@ function App() {
       {valid !== "" && isModalOpen && (
         <div className="modal-overlay" onClick={closeModal}>
           <div className="modal-content">
-            <div className="modal-error">ERROR!!</div>
+            <div className="modal-error">Oops!!</div>
             <div className="validation-error">{valid}</div>
           </div>
         </div>
       )}
+
+        
+
     </div>
   );
 }
