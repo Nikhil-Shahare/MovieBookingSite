@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { getlatestbook } from '../redux/bookmovieSlice';
 
+
 const BookDetails = () => {
   const dispatch = useDispatch();
   const [getlatest, setLatestBook] = useState(null);
@@ -20,16 +21,16 @@ const BookDetails = () => {
 
   return (
     <>
-      <div className="border rounded border-dark mt-2 slots d-flex flex-column" style={styles.container}>
+      <div className=" mt-2 slots d-flex flex-column" style={styles.container}>
         <h3>Last Booking Details:</h3>
 
         {getlatest !== null ? (
           <>
-          <h5 style={styles.text}>Movie: {getlatest.movie}</h5>
-          <h5 style={styles.text}>Slot: {getlatest.slot}</h5>
+          <h5 style={styles.text}> <span style={styles.head}>Movie:</span> {getlatest.movie}</h5>
+          <h5 style={styles.text}> <span style={styles.head}>Slot:</span> {getlatest.slot}</h5>
           
 
-          <h5 style={styles.text}>Seats:</h5>
+          <h5 style={styles.head}>Seats:</h5>
             <h5 style={styles.text}>A1: {getlatest.seats.A1}</h5>
             <h5 style={styles.text}>A2: {getlatest.seats.A2}</h5>
             <h5 style={styles.text}>A3: {getlatest.seats.A3}</h5>
@@ -51,7 +52,13 @@ const styles = {
   },
   text: {
     color: 'white',
+    
   },
+
+  head:{
+  color: "red",
+  fontSize : "24px"
+  }
 
 };
 
