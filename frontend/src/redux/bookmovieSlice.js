@@ -60,14 +60,14 @@ const Validation=(valBookmovie)=>{
   else if(valBookmovie.slot==="")
   {
     
-    return "slot name cant be blank" 
+    return "slot name can't be blank" 
   }
   else if(valBookmovie.seats.A1===0 && valBookmovie.seats.A2===0 && 
     valBookmovie.seats.A3===0 && valBookmovie.seats.A4===0
     && valBookmovie.seats.D1===0 && valBookmovie.seats.D2===0)
   {
 
-    return "seat name cant be blank" 
+    return "seat name can't be blank" 
   }
   else{
   return "";
