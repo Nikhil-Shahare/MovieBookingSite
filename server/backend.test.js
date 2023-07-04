@@ -12,7 +12,7 @@ describe('Backend Tests', () => {
   before((done) => {
     // Connect to a test database before running the tests
     mongoose
-      .connect('mongodb://localhost:27017/testdb', { useNewUrlParser: true })
+      .connect(process.env.MONGO, { useNewUrlParser: true })
       .then(() => done())
       .catch((err) => done(err));
   });
