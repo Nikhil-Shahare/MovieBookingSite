@@ -1,18 +1,16 @@
 import React, { memo } from 'react';
 import { setSlot } from '../redux/bookmovieSlice';
 import { useDispatch } from 'react-redux';
-import store from '../redux/store';
+
 import "./Time.css";
 
-const Time = ({ setBookmovie, Bookmovie }) => {
+const Time = () => {
   const dispatch = useDispatch();
 
+  // Function to handle updating the time slot
   const updatetimeslot = (e) => {
     dispatch(setSlot(e.target.value));
-    setBookmovie({ ...Bookmovie, [e.target.name]: e.target.value });
   };
-
-  console.log("timestore", store.getState());
 
   return (
     <div>
@@ -32,8 +30,6 @@ const Time = ({ setBookmovie, Bookmovie }) => {
           10:00 AM
         </label>
 
-        {/* Repeat the above pattern for the remaining time slots */}
-
         <input
           type="radio"
           class="btn-check"
@@ -47,7 +43,18 @@ const Time = ({ setBookmovie, Bookmovie }) => {
           01:00 PM
         </label>
 
-        {/* ... */}
+        <input
+          type="radio"
+          class="btn-check"
+          name="slot"
+          id="7"
+          autocomplete="off"
+          value="03:00 PM"
+          onChange={(e) => updatetimeslot(e)}
+        />
+        <label class="btn btn-outline-danger" for="7">
+          03:00 PM
+        </label>
 
         <input
           type="radio"
