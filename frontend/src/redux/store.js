@@ -1,9 +1,11 @@
-import {configureStore} from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import bookmovieReducer from './bookmovieSlice';
-const store=configureStore({
-reducer:{
-    bookmovie:bookmovieReducer,
-}
-   
-})
-export default store; 
+
+// Configure the Redux store
+const store = configureStore({
+  reducer: {
+    bookmovie: bookmovieReducer, // Set the bookmovieReducer as the reducer for 'bookmovie' state
+  },
+});
+
+export default store;

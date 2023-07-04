@@ -1,206 +1,126 @@
-body{
-    overflow-x: hidden;
-    align-items: center;
-    
-    
+/* Set the body styles */
+body {
+  overflow-x: hidden; /* Hide horizontal overflow */
+  align-items: center; /* Align items vertically */
 }
 
-.animation{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    background: url("../src/assets/infinite.jpg");
-    background-size: cover;
-    animation : infinite 35s linear infinite;    
+/* Animated background */
+.animation {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: url("../src/assets/infinite.jpg"); /* Set the background image */
+  background-size: cover; /* Scale the background image to cover the element */
+  animation: infinite 35s linear infinite; /* Apply animation to the background */
 }
 
+/* Adjust animation height for small devices */
 @media (max-width: 992px) {
-    .animation {
-      height: 150%;
-    }
-   
+  .animation {
+    height: 150%;
   }
-
-@keyframes infinite{
-    0%{
-        background-position: 50% 0;
-    }
-    100%{
-        background-position: 50% -1000px;
-    }
 }
 
-  
-  
-.main{
- max-width: 1200px;
- margin: auto;
- margin-top: 100px;
- 
-    
+/* Define the infinite animation */
+@keyframes infinite {
+  0% {
+    background-position: 50% 0;
+  }
+  100% {
+    background-position: 50% -1000px;
+  }
 }
 
+/* Main layout */
+.main {
+  max-width: 1200px;
+  margin: auto;
+  margin-top: 100px;
+}
+
+/* Adjust main layout for medium devices */
 @media (max-width: 1200px) {
-    .main {
-      margin-left: 15px;
-      margin-right: 15px;
-
-      
-    }
-   
+  .main {
+    margin-left: 15px;
+    margin-right: 15px;
   }
-
-  @media (max-width: 1200px) {
-    .main {
-      margin-left: 15px;
-      margin-right: 15px;
-
-       
-    }
-   
-  }
-
-
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(3px);
-    z-index: 1;
-  }
-  @media (max-width: 992px) {
-    .overlay {
-      height: 150%; /* Adjust the desired height for small devices */
-    }
-  }
-
-  @media (max-width: 653px) {
-    .animation {
-      height: 250%; /* Adjust the desired height for small devices */
-    }
-  }
-  @media (max-width: 653px) {
-    .overlay {
-      height: 250%; /* Adjust the desired height for small devices */
-    }
-  }
- 
-  .background{ 
-      z-index: 2;
-      background: black;
-  }
-
-.head{
-  z-index:2;
-  background: rgb(2,0,0);
-  background: linear-gradient(0deg, rgba(2,0,0,1) 6%, rgba(110,8,20,1) 96%);
-
 }
 
-
-
-
-.Btn {
-    width: 140px;
-    height: 40px;
-    border: none;
-    border-radius: 10px;
-    background: linear-gradient(to right, #990000, #CC0000, #FF0000, #FF3333, #FF6666, #FF9999);
-    background-size: 250%;
-    background-position: left;
-    color: #FF0000;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition-duration: 1s;
-    overflow: hidden;
-    margin-top: 10px;
-    /* margin-left : 10px; */
-    margin-bottom: 10px;
-  }
-  
-  .Btn::before {
-    position: absolute;
-    content: "BOOK NOW";
-    color: #FF0000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 97%;
-    height: 90%;
-    border-radius: 8px;
-    transition-duration: 1s;
-    background-color: rgba(0, 0, 0, 0.842);
-    background-size: 200%;
-  }
-  
-  .Btn:hover {
-    background-position: right;
-    transition-duration: 1s;
-  }
-  
-  .Btn:hover::before {
-    background-position: right;
-    transition-duration: 1s;
-  }
-  
-  .Btn:active {
-    transform: scale(0.95);
-  }
-  
-
-  
-.modal-overlay {
-  position: fixed;
+/* Overlay for the main content */
+.overlay {
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.6); /* Set the overlay background color */
+  backdrop-filter: blur(3px); /* Apply backdrop blur effect */
+  z-index: 1;
+}
+
+/* Adjust overlay height for small devices */
+@media (max-width: 992px) {
+  .overlay {
+    height: 150%; /* Adjust the desired height for small devices */
+  }
+}
+
+/* Adjust animation and overlay height for extra small devices */
+@media (max-width: 653px) {
+  .animation {
+    height: 250%;
+  }
+  .overlay {
+    height: 250%;
+  }
+}
+
+/* Background styles */
+.background {
+  z-index: 2;
+  background: black;
+}
+
+/* Header styles */
+.head {
+  z-index: 2;
+  background: rgb(2, 0, 0);
+  background: linear-gradient(0deg, rgba(2, 0, 0, 1) 6%, rgba(110, 8, 20, 1) 96%);
+}
+
+/* Book button styles */
+.Btn {
+  /* Button size and appearance */
+  width: 140px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(to right, #990000, #cc0000, #ff0000, #ff3333, #ff6666, #ff9999);
+  background-size: 250%;
+  background-position: left;
+  color: #ff0000;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 3;
-}
-
-
-.modal-content {
-  background-color: white;
-  
-  border-radius: 4px;
-  width: 80%;
-  max-width: 500px;
-  height: auto;
-  min-height: 200px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.modal-error {
-  background-color: red;
-  color: white;
-  
-  min-height: 60px;
-  border-radius: 4px;
-  text-align: center;
-  align-items: center;
-  margin-bottom: 3px;
-  font-weight: bold;
-  font-size: 36px;
-}
-
-.validation-error {
-  color: black;
-  font-size: 24px;
+  cursor: pointer;
+  transition-duration: 1s;
+  overflow: hidden;
+  margin-top: 10px;
   margin-bottom: 10px;
-  margin: auto;
-  font-weight: bold;
 }
 
+/* Styles for the text content before the button */
+.Btn::before {
+  position: absolute;
+  content: "BOOK NOW";
+  color: #ff0000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 97%;
+  height: 90%;
+  border-radius: 8
+}

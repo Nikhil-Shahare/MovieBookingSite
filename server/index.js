@@ -1,4 +1,3 @@
-
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
@@ -6,20 +5,24 @@ import cors from 'cors';
 import MovieBookRoutes from "./routes/moviebook.js";
 const app = express();
 
-import {connect} from './dbconnection/database.js'
+import { connect } from './dbconnection/database.js';
 
-//middlewares
+// Load environment variables from .env file
+dotenv.config();
+
+// Connect to the database
+connect();
+
+// Middlewares
 app.use(cors({
-
   methods: 'GET, POST',
-
 }));
 app.use(express.json());
-app.use("/api",MovieBookRoutes);
 
+// Route for movie booking
+app.use("/api", MovieBookRoutes);
 
-
-app.listen(process.env.port, () => {
-  connect();
+// Start the server
+app.listen(process.env.PORT, () => {
   console.log("Connected to Server");
 });
