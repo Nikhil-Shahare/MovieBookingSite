@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-// Define the initial state for the bookMovie slice
 const initialState = {
   Bookmovie: {
     movie: "",
@@ -16,37 +15,39 @@ const initialState = {
     slot: ""
   },
   latestBook: null,
-  valid: "false",
+  valid:"false",
 };
 
-// Create a slice for the bookMovie state
 const bookMovieSlice = createSlice({
   name: 'bookMovie',
   initialState,
   reducers: {
     setMovie: (state, action) => {
       state.Bookmovie.movie = action.payload;
-      state.valid = "";
+      state.valid="";
+
     },
     setSeats: (state, action) => {
       state.Bookmovie.seats = {
         ...state.Bookmovie.seats,
         ...action.payload
+      
       };
-      state.valid = "";
+      state.valid="";
     },
     setSlot: (state, action) => {
       state.Bookmovie.slot = action.payload;
-      state.valid = "";
+      state.valid="";
     },
     setLatestBook: (state, action) => {
       state.latestBook = action.payload;
+   
     },
-    // Action to set the validation message
-    setValidate: (state, action) => {
-      state.valid = action.payload;
-    }
+    setValidate:(state,action)=>{
+      state.valid=action.payload;
+          }
   },
+
 });
 
 export const { setMovie, setSeats, setSlot, setLatestBook,setValidate } = bookMovieSlice.actions;
@@ -60,23 +61,25 @@ const Validation=(valBookmovie)=>{
   else if(valBookmovie.slot==="")
   {
     
-    return "slot name can't be blank" 
+    return "slot name cant be blank" 
   }
   else if(valBookmovie.seats.A1===0 && valBookmovie.seats.A2===0 && 
     valBookmovie.seats.A3===0 && valBookmovie.seats.A4===0
     && valBookmovie.seats.D1===0 && valBookmovie.seats.D2===0)
   {
 
-    return "seat name can't be blank" 
+    return "seat name cant be blank" 
   }
   else{
   return "";
   }
-};
+}
 
 export const postBookmovie = () => {
   return async (dispatch, getState) => {
-    try {
+    console.log("getstate",getState().bookmovie);
+ 
+    try{
       const valBookmovie = await getState().bookmovie.Bookmovie;
       console.log("slicebook",valBookmovie)
       const val= Validation(valBookmovie);
@@ -91,7 +94,7 @@ export const postBookmovie = () => {
          dispatch(setLatestBook(response.data));
      
          dispatch(setValidate(""));
-            window.location.reload();
+         window.location.reload();
     
        } catch (error) {
          console.log(error);
@@ -100,11 +103,16 @@ export const postBookmovie = () => {
       else{
         console.log("getstate1",val);
         dispatch(getlatestbook());
-        dispatch(setValidate(val));
+       dispatch(setValidate(val));
+  
+   
       }
-    } catch (error) {
-      console.log(error);
     }
+    catch(error){
+
+    }
+
+  
   };
 };
 
