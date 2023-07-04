@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+// Define the initial state for the bookMovie slice
 const initialState = {
   Bookmovie: {
     movie: "",
@@ -15,112 +16,98 @@ const initialState = {
     slot: ""
   },
   latestBook: null,
-  valid:"false",
+  valid: "false",
 };
 
+// Create a slice for the bookMovie state
 const bookMovieSlice = createSlice({
   name: 'bookMovie',
   initialState,
   reducers: {
+    // Action to set the selected movie and reset the validation message
     setMovie: (state, action) => {
       state.Bookmovie.movie = action.payload;
-      state.valid="";
-
+      state.valid = "";
     },
+    // Action to set the selected seats and reset the validation message
     setSeats: (state, action) => {
       state.Bookmovie.seats = {
         ...state.Bookmovie.seats,
         ...action.payload
-      
       };
-      state.valid="";
+      state.valid = "";
     },
+    // Action to set the selected slot and reset the validation message
     setSlot: (state, action) => {
       state.Bookmovie.slot = action.payload;
-      state.valid="";
+      state.valid = "";
     },
+    // Action to set the latest booking data
     setLatestBook: (state, action) => {
       state.latestBook = action.payload;
-   
     },
-    setValidate:(state,action)=>{
-      state.valid=action.payload;
-          }
+    // Action to set the validation message
+    setValidate: (state, action) => {
+      state.valid = action.payload;
+    }
   },
-
 });
 
-export const { setMovie, setSeats, setSlot, setLatestBook,setValidate } = bookMovieSlice.actions;
-const Validation=(valBookmovie)=>{
-  //  console.log("valslot",valBookmovie.slot);
-  if(valBookmovie.movie===""){
-    
-    return "movie name can't be blank"
-    
-  }
-  else if(valBookmovie.slot==="")
-  {
-    
-    return "slot name cant be blank" 
-  }
-  else if(valBookmovie.seats.A1===0 && valBookmovie.seats.A2===0 && 
-    valBookmovie.seats.A3===0 && valBookmovie.seats.A4===0
-    && valBookmovie.seats.D1===0 && valBookmovie.seats.D2===0)
-  {
+// Export the individual actions from the slice
+export const { setMovie, setSeats, setSlot, setLatestBook, setValidate } = bookMovieSlice.actions;
 
-    return "seat name cant be blank" 
-  }
-  else{
-  return "";
+// Function to validate the bookmovie state
+const Validation = (valBookmovie) => {
+  if (valBookmovie.movie === "") {
+    return "Movie name can't be blank";
+  } else if (valBookmovie.slot === "") {
+    return "Slot name can't be blank";
+  } else if (
+    valBookmovie.seats.A1 === 0 &&
+    valBookmovie.seats.A2 === 0 &&
+    valBookmovie.seats.A3 === 0 &&
+    valBookmovie.seats.A4 === 0 &&
+    valBookmovie.seats.D1 === 0 &&
+    valBookmovie.seats.D2 === 0
+  ) {
+    return "Seat name can't be blank";
+  } else {
+    return "";
   }
 }
 
+// Async action to post the bookmovie data
 export const postBookmovie = () => {
   return async (dispatch, getState) => {
-    console.log("getstate",getState().bookmovie);
- 
-    try{
+    try {
       const valBookmovie = await getState().bookmovie.Bookmovie;
-      console.log("slicebook",valBookmovie)
-      const val= Validation(valBookmovie);
-      
-      if(val==="")
-      {
-       try {
-         const response = await 
-         axios.post('https://spring-green-turtle-hat.cyclic.app/api/booking',
-         valBookmovie);
-         console.log(response);
-         dispatch(setLatestBook(response.data));
-     
-         dispatch(setValidate(""));
-         window.location.reload();
-    
-       } catch (error) {
-         console.log(error);
-       }
-      }
-      else{
-        console.log("getstate1",val);
+      const val = Validation(valBookmovie);
+
+      if (val === "") {
+        try {
+          const response = await axios.post('https://spring-green-turtle-hat.cyclic.app/api/booking', valBookmovie);
+          dispatch(setLatestBook(response.data));
+          dispatch(setValidate(""));
+          window.location.reload(); // Refresh the page after successful booking
+        } catch (error) {
+          console.log(error);
+        }
+      } else {
         dispatch(getlatestbook());
-       dispatch(setValidate(val));
-  
-   
+        dispatch(setValidate(val));
       }
+    } catch (error) {
+      console.log(error);
     }
-    catch(error){
-
-    }
-
-  
   };
 };
 
+// Action to get the latest booking data
 export const getlatestbook = () => {
   return (dispatch) => {
     axios
-      .get("https://spring-green-turtle-hat.cyclic.app/api/booking")  // Updated backend API URL
-      .then((response) => {
+      .get("https://spring-green-turtle-hat.cyclic.app/api/booking") // Updated backend API URL
+      .then((response) =>{
         dispatch(setLatestBook(response.data));
       })
       .catch((error) => {
@@ -130,3 +117,4 @@ export const getlatestbook = () => {
 };
 
 export default bookMovieSlice.reducer;
+
