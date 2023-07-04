@@ -3,8 +3,8 @@ const chaiHttp = require('chai-http');
 const expect = chai.expect;
 const mongoose = require('mongoose');
 
-const app = require('../server'); // Assuming your server file is named 'server.js'
-const bookingsModel = require('../model/bookings');
+const app = require('./server'); // Assuming your server file is named 'server.js'
+const bookingsModel = require('./model/bookings');
 
 chai.use(chaiHttp);
 
