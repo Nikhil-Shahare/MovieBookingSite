@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+// Define the initial state for the bookMovie slice
 const initialState = {
   Bookmovie: {
     movie: "",
@@ -18,16 +19,15 @@ const initialState = {
   valid: "false",
 };
 
+// Create a slice for the bookMovie state
 const bookMovieSlice = createSlice({
   name: 'bookMovie',
   initialState,
   reducers: {
-    // Action to set the selected movie
     setMovie: (state, action) => {
       state.Bookmovie.movie = action.payload;
       state.valid = "";
     },
-    // Action to set the selected seats
     setSeats: (state, action) => {
       state.Bookmovie.seats = {
         ...state.Bookmovie.seats,
@@ -35,12 +35,10 @@ const bookMovieSlice = createSlice({
       };
       state.valid = "";
     },
-    // Action to set the selected time slot
     setSlot: (state, action) => {
       state.Bookmovie.slot = action.payload;
       state.valid = "";
     },
-    // Action to set the latest booking details
     setLatestBook: (state, action) => {
       state.latestBook = action.payload;
     },
@@ -51,39 +49,56 @@ const bookMovieSlice = createSlice({
   },
 });
 
-// Extracted validation logic into a separate function
-const Validation = (valBookmovie) => {
-  if (valBookmovie.movie === "") {
-    return "movie name can't be blank";
-  } else if (valBookmovie.slot === "") {
-    return "slot name can't be blank";
-  } else if (
-    valBookmovie.seats.A1 === 0 &&
-    valBookmovie.seats.A2 === 0 &&
-    valBookmovie.seats.A3 === 0 &&
-    valBookmovie.seats.A4 === 0 &&
-    valBookmovie.seats.D1 === 0 &&
-    valBookmovie.seats.D2 === 0
-  ) {
-    return "seat name can't be blank";
-  } else {
-    return "";
+export const { setMovie, setSeats, setSlot, setLatestBook,setValidate } = bookMovieSlice.actions;
+const Validation=(valBookmovie)=>{
+  //  console.log("valslot",valBookmovie.slot);
+  if(valBookmovie.movie===""){
+    
+    return "movie name can't be blank"
+    
+  }
+  else if(valBookmovie.slot==="")
+  {
+    
+    return "slot name can't be blank" 
+  }
+  else if(valBookmovie.seats.A1===0 && valBookmovie.seats.A2===0 && 
+    valBookmovie.seats.A3===0 && valBookmovie.seats.A4===0
+    && valBookmovie.seats.D1===0 && valBookmovie.seats.D2===0)
+  {
+
+    return "seat name can't be blank" 
+  }
+  else{
+  return "";
   }
 };
 
-// Async action to post the booking details to the backend API
 export const postBookmovie = () => {
   return async (dispatch, getState) => {
     try {
       const valBookmovie = await getState().bookmovie.Bookmovie;
-      const val = Validation(valBookmovie);
-
-      if (val === "") {
-        const response = await axios.post('https://spring-green-turtle-hat.cyclic.app/api/booking', valBookmovie);
-        dispatch(setLatestBook(response.data));
-        dispatch(setValidate(""));
-        window.location.reload();
-      } else {
+      console.log("slicebook",valBookmovie)
+      const val= Validation(valBookmovie);
+      
+      if(val==="")
+      {
+       try {
+         const response = await 
+         axios.post('https://spring-green-turtle-hat.cyclic.app/api/booking',
+         valBookmovie);
+         console.log(response);
+         dispatch(setLatestBook(response.data));
+     
+         dispatch(setValidate(""));
+            window.location.reload();
+    
+       } catch (error) {
+         console.log(error);
+       }
+      }
+      else{
+        console.log("getstate1",val);
         dispatch(getlatestbook());
         dispatch(setValidate(val));
       }
@@ -93,11 +108,10 @@ export const postBookmovie = () => {
   };
 };
 
-// Async action to fetch the latest booking details from the backend API
 export const getlatestbook = () => {
   return (dispatch) => {
     axios
-      .get("https://spring-green-turtle-hat.cyclic.app/api/booking")
+      .get("https://spring-green-turtle-hat.cyclic.app/api/booking")  // Updated backend API URL
       .then((response) => {
         dispatch(setLatestBook(response.data));
       })
@@ -106,7 +120,5 @@ export const getlatestbook = () => {
       });
   };
 };
-
-export const { setMovie, setSeats, setSlot, setLatestBook, setValidate } = bookMovieSlice.actions;
 
 export default bookMovieSlice.reducer;
