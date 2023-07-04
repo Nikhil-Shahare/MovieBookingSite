@@ -36,7 +36,7 @@ const Seats = () => {
     <div>
       <div className="border rounded border-dark mb-1 slots">
         <h3>Select The Seats</h3>
-        {/* Checkboxes for showing seat types */}
+        {/* Checkbox for showing Movies Seats Type */}
         <input
           type="checkbox"
           class="btn-check "
@@ -51,7 +51,6 @@ const Seats = () => {
         </label>
 
         {/* Repeat the above pattern for the remaining seat types */}
-
         <input
           type="checkbox"
           class="btn-check"
@@ -65,7 +64,44 @@ const Seats = () => {
           <div><input type='number' name="A2" onChange={(e) => selectseats(e)} /></div>
         </label>
 
-        {/* ... */}
+        <input
+          type="checkbox"
+          class="btn-check"
+          name="A3"
+          id="11"
+          autocomplete="off"
+          onChange={(e) => seldeselectseats(e)}
+        />
+        <label class="btn btn-outline-danger .d-flex flex-row" for="11">
+          <div className="m-0 p-0">Type A3</div>
+          <div><input type='number' name="A3" onChange={(e) => selectseats(e)} /></div>
+        </label>
+
+        <input
+          type="checkbox"
+          class="btn-check background"
+          name="A4"
+          id="12"
+          autocomplete="off"
+          onChange={(e) => seldeselectseats(e)}
+        />
+        <label class="btn btn-outline-danger .d-flex flex-row" for="12">
+          <div className="m-0 p-0">Type A4</div>
+          <div><input type='number' name="A4" onChange={(e) => selectseats(e)} /></div>
+        </label>
+
+        <input
+          type="checkbox"
+          class="btn-check"
+          name="D1"
+          id="13"
+          autocomplete="off"
+          onChange={(e) => seldeselectseats(e)}
+        />
+        <label class="btn btn-outline-danger .d-flex flex-row" for="13">
+          <div className="m-0 p-0">Type D1</div>
+          <div><input type='number' name="D1" onChange={(e) => selectseats(e)} /></div>
+        </label>
 
         <input
           type="checkbox"
