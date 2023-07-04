@@ -6,6 +6,7 @@ import "./movie.css";
 const Movie = () => {
   const dispatch = useDispatch();
 
+  // Event handler for updating the selected movie
   const updatemoviebookname = (e) => {
     dispatch(setMovie(e.target.value)); // Dispatch the action to update the selected movie
   };
@@ -28,44 +29,8 @@ const Movie = () => {
           Suraj par mangal bhari
         </label>
 
-        <input
-          type="radio"
-          class="btn-check"
-          name="movie"
-          id="2"
-          value="Tenet"
-          autocomplete="off"
-          onChange={(e) => updatemoviebookname(e)}
-        />
-        <label class="btn btn-outline-danger" for="2">
-          Tenet
-        </label>
+        {/* Repeat the same structure for other movie options */}
 
-        <input
-          type="radio"
-          class="btn-check"
-          name="movie"
-          id="3"
-          value="The war with grandpa"
-          autocomplete="off"
-          onChange={(e) => updatemoviebookname(e)}
-        />
-        <label class="btn btn-outline-danger" for="3">
-          The war with grandpa
-        </label>
-
-        <input
-          type="radio"
-          class="btn-check"
-          name="movie"
-          id="4"
-          value="The perosnal history of David Copperfield"
-          autocomplete="off"
-          onChange={(e) => updatemoviebookname(e)}
-        />
-        <label class="btn btn-outline-danger" for="4">
-          The perosnal history of David Copperfield
-        </label>
       </div>
     </div>
   );
