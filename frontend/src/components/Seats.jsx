@@ -11,10 +11,12 @@ const Seats = () => {
 
   const dispatch = useDispatch();
 
+  // Function to handle seat selection and deselection
   function seldeselectseats(e) {
     const val = Bookmovie.seats[e.target.name];
     console.log("val", val);
     if (Number(val) > 0) {
+      // If the seat is selected, set the seat count to 0 (deselect)
       dispatch(setSeats({ [e.target.name]: 0 }));
       console.log("seatstore", store.getState());
     } else {
@@ -22,6 +24,7 @@ const Seats = () => {
     }
   }
 
+  // Function to handle seat selection
   function selectseats(e) {
     let name = e.target.name;
     let value = e.target.value;
