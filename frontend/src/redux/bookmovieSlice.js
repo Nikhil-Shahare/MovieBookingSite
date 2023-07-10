@@ -66,7 +66,7 @@ const Validation = (valBookmovie) => {
     valBookmovie.seats.D2 === 0) && valBookmovie.slot === "" ) {
     return "fields name can't be blank";
   }
-  if (valBookmovie.movie === "") {
+ else if (valBookmovie.movie === "") {
     return "Movie name can't be blank";
   } else if (valBookmovie.slot === "") {
     return "Slot name can't be blank";
