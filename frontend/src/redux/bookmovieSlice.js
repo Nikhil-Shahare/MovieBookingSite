@@ -58,6 +58,14 @@ export const { setMovie, setSeats, setSlot, setLatestBook, setValidate } = bookM
 
 // Function to validate the bookmovie state
 const Validation = (valBookmovie) => {
+  if(valBookmovie.movie === "" &&     (valBookmovie.seats.A1 === 0 &&
+    valBookmovie.seats.A2 === 0 &&
+    valBookmovie.seats.A3 === 0 &&
+    valBookmovie.seats.A4 === 0 &&
+    valBookmovie.seats.D1 === 0 &&
+    valBookmovie.seats.D2 === 0) && valBookmovie.slot === "" ) {
+    return "fields name can't be blank";
+  }
   if (valBookmovie.movie === "") {
     return "Movie name can't be blank";
   } else if (valBookmovie.slot === "") {
