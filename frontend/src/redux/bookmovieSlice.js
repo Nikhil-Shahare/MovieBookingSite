@@ -63,15 +63,28 @@ const Validation = (valBookmovie) => {
   } else if (valBookmovie.slot === "") {
     return "Slot name can't be blank";
   } else if (
-    valBookmovie.seats.A1 === 0 &&
+    (valBookmovie.seats.A1 === 0 &&
     valBookmovie.seats.A2 === 0 &&
     valBookmovie.seats.A3 === 0 &&
     valBookmovie.seats.A4 === 0 &&
     valBookmovie.seats.D1 === 0 &&
-    valBookmovie.seats.D2 === 0
+    valBookmovie.seats.D2 === 0) 
   ) {
     return "Seat name can't be blank";
-  } else {
+  }
+    else if (
+    (valBookmovie.seats.A1 < 1 ||
+    valBookmovie.seats.A2 < 1 ||
+    valBookmovie.seats.A3 < 1 ||
+    valBookmovie.seats.A4 < 1 ||
+    valBookmovie.seats.D1 < 1 ||
+    valBookmovie.seats.D2 < 1) 
+  ) {
+    return "Seat name can't be negative";
+  }
+  
+  
+  else {
     return "";
   }
 }
