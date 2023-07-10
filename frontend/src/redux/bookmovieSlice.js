@@ -77,8 +77,7 @@ const Validation = (valBookmovie) => {
     valBookmovie.seats.A2 < 1 ||
     valBookmovie.seats.A3 < 1 ||
     valBookmovie.seats.A4 < 1 ||
-    valBookmovie.seats.D1 < 1 ||
-    valBookmovie.seats.D2 < 1) 
+    valBookmovie.seats.D1 < 1 || valBookmovie.seats.D2 < 1) 
   ) {
     return "Seat name can't be negative";
   }
