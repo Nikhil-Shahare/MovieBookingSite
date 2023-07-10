@@ -69,7 +69,7 @@ const Validation = (valBookmovie) => {
  else if (valBookmovie.movie === "") {
     return "Movie name can't be blank";
   } else if (valBookmovie.slot === "") {
-    return "Slot name can't be blank";
+    return "Time Slot  can't be blank";
   } else if (
     (valBookmovie.seats.A1 === 0 &&
     valBookmovie.seats.A2 === 0 &&
